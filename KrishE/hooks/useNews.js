@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext, useCallback } from 'react';
 import { LanguageContext } from '../context/LanguageContext';
+import Constants from "expo-constants";
 
-const API_KEY = '61398531df98b49f4cedb494c8a1078c'; // Move to .env in production
+const API_KEY=Constants.expoConfig.extra.NEWS_API_KEY;
 
 const useNews = () => {
   const { lang } = useContext(LanguageContext);

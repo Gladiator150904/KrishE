@@ -1,13 +1,11 @@
-import { View, Text, ImageBackground, Image, FlatList, TouchableOpacity } from 'react-native';
-import React, { useContext, useState, useEffect } from 'react';
-import { LocationContext } from '../../context/LocationContext';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { translations } from '../../localizations';
-import { LanguageContext } from '../../context/LanguageContext';
-import { backgrounds } from '../../constants/weather_bg';
 import { LinearGradient } from 'expo-linear-gradient';
+import React, { useContext, useEffect, useState } from 'react';
+import { FlatList, Image, ImageBackground, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { backgrounds } from '../../constants/weather_bg';
+import { LocationContext } from '../../context/LocationContext';
 // import { weatherIcons } from '../../constants/weather_icons';
-import PlantEffect from '../../components/PlantEffect';
+import Constants from 'expo-constants';
 import { icons } from '../../constants';
 
 const Weather = () => {
@@ -18,7 +16,7 @@ const Weather = () => {
 
   
 
-  const apiKey = '8d232182e91e415883872025252901';
+  const apiKey = Constants.expoConfig.extra.WEATHER_API_KEY;
   const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location.latitude},${location.longitude}&aqi=no&days=5`;
 
   const fetchWeatherData = async () => {
